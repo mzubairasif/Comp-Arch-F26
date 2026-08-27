@@ -1,37 +1,38 @@
-# a = 0x100, 8 bit
-# b = 0x200, 16 bit
-# c = 0x300, 32 bit
+# a = 0x100, 1 byte
+# b = 0x200, 2 byte
+# c = 0x300, 4 byte
 
 # x1 = a[i]
 # x2 = b[i]
 # x3 = c[i]
 
-# x5, x6, x7 offset calcs
+# base addresses
+li x11, 0x100
+li x12, 0x200
+li x13, 0x300
+
 
 # 0th iter
-lb x1, 0x100(x0)
-lh x2, 0x200(x0)
-add x4, x1, x2
-sw x4, 0x300(x0)
+lb x1, 0(x11)
+lh x2, 0(x12)
+add x3, x1, x2
+sw x3, 0(x13)
 
 # 1th iter
-lb x1, 0x100(x0)
-lh x2, 0x200(x0)
-add x4, x1, x2
-li x5, 32
-sw x4, 0x300(x5)
+lb x1, 1(x11)
+lh x2, 2(x12)
+add x3, x1, x2
+sw x3, 4(x13)
 
 # 2th iter
-lb x1, 0x100(x0)
-lh x2, 0x200(x0)
-add x4, x1, x2
-li x6, 64
-sw x4, 0x300(x6)
+lb x1, 2(x11)
+lh x2, 4(x12)
+add x3, x1, x2
+sw x3, 8(x13)
 
 # 3th iter
-lb x1, 0x100(x0)
-lh x2, 0x200(x0)
-li x7, 96
-add x4, x1, x2
-sw x4, 0x300(x7)
+lb x1, 3(x11)
+lh x2, 6(x12)
+add x3, x1, x2
+sw x3, 12(x13)
 

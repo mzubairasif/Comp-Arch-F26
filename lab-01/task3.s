@@ -24,8 +24,8 @@ main:
     add x5, x7, x8  # e = (a - d) + (b - a)
     add x5, x5, x4  # e = e + d
 
-    add x5, x5, x5  # e = e + e
-    add x5, x1, x2  # e = a + b
+    add x5, x5, x1  # e = e + a
+    add x5, x5, x2  # e = e + b
     add x5, x5, x4  # e = e + d
 
 end:
