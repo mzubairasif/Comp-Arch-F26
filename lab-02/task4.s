@@ -3,21 +3,16 @@
 # i = x7
 # j = x29
 
- # init address
+# initializing registers ONLY FOR TESING
+# li x5, 3
+# li x6, 4
+# li x10, 0x100
 
-li x5, 3
-li x6, 4
-
-li x10, 0x0
+#----------------
 
 li x7, 0
-
 Loop_i:
     li x29, 0
-    sb x15, 0(x31)
-    sb x15, 0(x31)
-    sb x15, 0(x31)
-    sb x15, 0(x31)
     
     Loop_j:
         add x15, x7, x29 # i + j
@@ -32,4 +27,5 @@ Loop_i:
 
         addi x7, x7, 1
 
-        blt x7, x5, Loop_i
+    blt x7, x5, Loop_i
+

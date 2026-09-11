@@ -3,7 +3,6 @@
 
 li x10, 10 # terminating cond var
 
-
 li x20, 0x200 # init address
 li x22, 0
 Loop1:
