@@ -16,7 +16,7 @@ tri:
     jalr x0, 0(x1)  # return
 
 L1:
-    addi, x10, x10, -1  # arg = n-1
+    addi x10, x10, -1  # arg = n-1
     jal x1, tri
 
     addi x6, x10, 0 # save result of tri(n-1)
