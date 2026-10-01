@@ -1,0 +1,43 @@
+#-----------------------------------------------------------
+# xsim v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Sep 24 01:14:10 2026
+# Process ID: 12924
+# Current directory: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/sim_run
+# Command line: xsim.exe -mode tcl -source {xsim.dir/top_sim/xsim_script.tcl}
+# Log file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/sim_run/xsim.log
+# Journal file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/sim_run\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/top_sim/xsim_script.tcl
+# xsim {top_sim} -autoloadwcfg -runall
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+run -all
+Starting Top-Level FSM System Testbench...
+[Time 0 ns] Test 1: Asserting reset (pbin)...
+[Time 100 ns] Test 2: Checking idle state with physical_sw = 0
+[Time 200 ns] Test 3: Setting physical_sw = 5, triggering countdown
+    [SlowClk Tick] state=1 | Counter=5 | physical_leds=5
+    [SlowClk Tick] state=1 | Counter=4 | physical_leds=4
+    [SlowClk Tick] state=1 | Counter=3 | physical_leds=3
+    [SlowClk Tick] state=1 | Counter=2 | physical_leds=2
+    [SlowClk Tick] state=1 | Counter=1 | physical_leds=1
+    [SlowClk Tick] state=1 | Counter=0 | physical_leds=0
+[Time 755 ns] Test 4: Testing switch immunity (load 6, tamper with 15)
+    [SlowClk Tick] state=1 | Counter=6 | physical_leds=6
+    [SlowClk Tick] state=1 | Counter=5 | physical_leds=5
+    [SlowClk Tick] state=1 | Counter=4 | physical_leds=4
+    [SlowClk Tick] state=1 | Counter=3 | physical_leds=3
+    [SlowClk Tick] state=1 | Counter=2 | physical_leds=2
+    [SlowClk Tick] state=1 | Counter=1 | physical_leds=1
+    [SlowClk Tick] state=1 | Counter=0 | physical_leds=0
+[Time 1295 ns] Test 5: Testing reset mid-countdown
+    [SlowClk Tick] state=1 | Counter=10 | physical_leds=10
+    [SlowClk Tick] state=1 | Counter=9 | physical_leds=9
+    [SlowClk Tick] state=1 | Counter=8 | physical_leds=8
+[Time 1535 ns] Asserting reset (pbin) mid-countdown!
+[Time 1715 ns] All top-level tests completed successfully!
+$finish called at time : 1715 ns : File "c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sim_1/new/top_fsm_system_tb.v" Line 124
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Sep 24 01:14:17 2026...

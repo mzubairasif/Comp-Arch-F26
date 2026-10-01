@@ -1,0 +1,1 @@
+-nolog -top "top_fsm_system_tb" -snapshot "top_fsm_tb_snap" -debug "typical" 

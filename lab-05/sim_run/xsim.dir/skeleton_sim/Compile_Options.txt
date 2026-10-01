@@ -1,0 +1,1 @@
+-debug "typical" "work.skeleton_top_fsm_tb" -s "skeleton_sim" 

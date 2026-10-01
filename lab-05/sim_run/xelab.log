@@ -1,0 +1,18 @@
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -debug typical work.skeleton_top_fsm_tb -s skeleton_sim 
+Multi-threading is on. Using 10 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.debouncer
+Compiling module work.leds
+Compiling module work.switches
+Compiling module work.clock_divider
+Compiling module work.fsm_counter
+Compiling module work.skeleton_top_fsm
+Compiling module work.skeleton_top_fsm_tb
+Built simulation snapshot skeleton_sim

@@ -1,0 +1,1 @@
+-nolog -top "fsm_counter_tb_check" -snapshot "fsm_counter_check_snap" -debug "typical" 

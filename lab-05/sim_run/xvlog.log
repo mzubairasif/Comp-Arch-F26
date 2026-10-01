@@ -1,0 +1,14 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/debouncer.v" into library work
+INFO: [VRFC 10-311] analyzing module debouncer
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/leds.v" into library work
+INFO: [VRFC 10-311] analyzing module leds
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/switches.v" into library work
+INFO: [VRFC 10-311] analyzing module switches
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/clock_divider.v" into library work
+INFO: [VRFC 10-311] analyzing module clock_divider
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/fsm_counter.v" into library work
+INFO: [VRFC 10-311] analyzing module fsm_counter
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/skeleton_top_fsm.v" into library work
+INFO: [VRFC 10-311] analyzing module skeleton_top_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sim_1/new/skeleton_top_fsm_tb.v" into library work
+INFO: [VRFC 10-311] analyzing module skeleton_top_fsm_tb

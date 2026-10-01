@@ -1,0 +1,1 @@
+-debug "typical" "work.sequence_detector_tb" -s "seq_sim" 

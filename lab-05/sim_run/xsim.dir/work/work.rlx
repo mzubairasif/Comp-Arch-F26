@@ -1,0 +1,16 @@
+0.7
+2020.1
+May 27 2020
+20:09:33
+C:/Users/Zubi/.gemini/antigravity-ide/brain/8d71073c-0bf6-4e1b-8e01-85892cf32fb5/scratch/fsm_counter_tb_check.v,1790189470,verilog,,,,fsm_counter_tb_check,,,,,,,,
+C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sim_1/new/fsm_counter_tb.v,1790190249,verilog,,,,fsm_counter_tb,,,,,,,,
+,,,,,,skeleton_top_fsm_tb,,,,,,,,
+,,,,,,,,,,,,,,
+c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/clock_divider.v,1790156060,verilog,,c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/fsm_counter.v,,clock_divider,,,,,,,,
+c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/debouncer.v,1790156061,verilog,,c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/leds.v,,debouncer,,,,,,,,
+c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/fsm_counter.v,1790185482,verilog,,c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/skeleton_top_fsm.v,,fsm_counter,,,,,,,,
+c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/leds.v,1790156063,verilog,,c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/switches.v,,leds,,,,,,,,
+c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/seq_detector.sv,1790156059,systemVerilog,,c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/seq_detector_tb.sv,,sequence_detector,,,,,,,,
+c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/seq_detector_tb.sv,1790156057,systemVerilog,,,,sequence_detector_tb,,,,,,,,
+c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/skeleton_top_fsm.v,1790228095,verilog,,c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sim_1/new/skeleton_top_fsm_tb.v,,skeleton_top_fsm,,,,,,,,
+c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/switches.v,1790156066,verilog,,c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.srcs/sources_1/new/clock_divider.v,,switches,,,,,,,,

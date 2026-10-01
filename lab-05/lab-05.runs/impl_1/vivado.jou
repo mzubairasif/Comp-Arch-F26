@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Sep 24 11:38:21 2026
+# Process ID: 11884
+# Current directory: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.runs/impl_1
+# Command line: vivado.exe -log skeleton_top_fsm.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source skeleton_top_fsm.tcl -notrace
+# Log file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.runs/impl_1/skeleton_top_fsm.vdi
+# Journal file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-05/lab-05.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source skeleton_top_fsm.tcl -notrace

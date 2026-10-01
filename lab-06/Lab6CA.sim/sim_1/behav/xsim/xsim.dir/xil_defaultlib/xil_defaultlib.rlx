@@ -1,0 +1,15 @@
+0.7
+2020.1
+May 27 2020
+20:09:33
+C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.sim/sim_1/behav/xsim/glbl.v,1590624368,verilog,,,,glbl,,,,,,,,
+C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sim_1/new/tb_1.v,1790834713,verilog,,C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sim_1/new/tb_32bit_all.v,,tb_ALU_1bit,,,,,,,,
+C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sim_1/new/tb_32bit_all.v,1790837043,verilog,,,,tb_32bit_all,,,,,,,,
+C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/ALU_1bit.v,1790834123,verilog,,C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/ALU_32bit.v,,ALU_1bit,,,,,,,,
+C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/ALU_32bit.v,1790836727,verilog,,C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/AND.v,,ALU_32bit,,,,,,,,
+C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/AND.v,1790834645,verilog,,C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/OR.v,,AND,,,,,,,,
+C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/OR.v,1790834647,verilog,,C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/SLL.v,,OR,,,,,,,,
+C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/SLL.v,1790835880,verilog,,C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/SRL.v,,SLL,,,,,,,,
+C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/SRL.v,1790835884,verilog,,C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/XOR.v,,SRL,,,,,,,,
+C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/XOR.v,1790834650,verilog,,C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/adder.v,,XOR,,,,,,,,
+C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/adder.v,1790828268,verilog,,C:/Users/Precision 7720 Ok/Downloads/Lab6CA/Lab6CA.srcs/sim_1/new/tb_32bit_all.v,,adder,,,,,,,,

@@ -1,0 +1,1 @@
+-debug "typical" "work.top_fsm_system_tb" -s "top_sim" 
