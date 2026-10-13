@@ -6,145 +6,225 @@ module tb_top_fsm_system;
     reg pbin;
     reg [15:0] physical_sw;
     wire [15:0] physical_leds;
+    wire [6:0] seg;
+    wire dp;
+    wire [3:0] an;
 
-    // Instantiate Top FSM System
-    top_fsm_system uut (
+    // Instantiate Top FSM System with fast parameters for simulation
+    top_fsm_system #(
+        .SIM_DIVIDER_COUNT(10), // Fast slow_clk: flips every 10 cycles
+        .SIM_REFRESH_BITS(4)    // Fast 7-segment refresh multiplexing
+    ) uut (
         .clk(clk),
         .pbin(pbin),
         .physical_sw(physical_sw),
-        .physical_leds(physical_leds)
+        .physical_leds(physical_leds),
+        .seg(seg),
+        .dp(dp),
+        .an(an)
     );
 
     // 100 MHz clock generation (10ns period)
     always #5 clk = ~clk;
 
-    // Task to press and release button (holding across debouncer duration 65536 cycles)
-    task press_button;
+    // Helper task to wait for slow clock tick and allow LED register to latch
+    task wait_one_step;
+    begin
+        @(posedge uut.slow_clk);
+        @(posedge clk); // reg_op updates here, ALU computes new writeData
+        @(posedge clk); // leds module registers new writeData to physical_leds
+        #1;
+    end
+    endtask
+
+    // Helper task to press and release button (for debouncer with fast pulses if needed, or direct)
+    task press_button_sim;
     begin
         pbin = 1'b1;
-        // Hold high for ~70,000 clock cycles (700us) to pass debouncer
         repeat (70000) @(posedge clk);
         pbin = 1'b0;
-        // Hold low for ~70,000 clock cycles to allow debouncer to reset
         repeat (70000) @(posedge clk);
     end
     endtask
+
+    // Helper function to decode 7-segment bits ('0' or '1')
+    function [0:0] seg_to_val;
+        input [6:0] s;
+        begin
+            if (s == 7'b1000000)
+                seg_to_val = 1'b0;
+            else if (s == 7'b1111001)
+                seg_to_val = 1'b1;
+            else
+                seg_to_val = 1'bx;
+        end
+    endfunction
+
+    integer test_errors = 0;
 
     initial begin
         clk = 0;
         pbin = 0;
         physical_sw = 16'd0;
 
-        $display("=================================================");
-        $display("   STARTING TOP FSM SYSTEM TESTBENCH SIMULATION   ");
-        $display("=================================================");
+        $display("==================================================================");
+        $display("    STARTING TOP FSM SYSTEM TESTBENCH (TASK 3 ALU AUTO-LOOP)      ");
+        $display("==================================================================");
 
-        // Wait initial settling time
-        repeat (100) @(posedge clk);
+        // Allow clock to settle and leds module to latch initial Opcode 0 value
+        @(posedge clk);
+        @(posedge clk);
+        #1;
 
-        // -----------------------------------------------------------------
-        // TEST 1: 5 + 3 = 8 (Opcode 2)
-        // -----------------------------------------------------------------
-        $display("\n[TEST 1] Setting up A = 5, B = 3, Opcode = 2 (ADD)");
+        $display("Hardcoded Operands: A = 0x10101010, B = 0x01010101");
+        $display("Checking all operations in automatic cycling loop...\n");
 
-        // Step 0: Set A[15:0] = 5
-        physical_sw = 16'd5;
-        repeat (20) @(posedge clk);
-        $display("State 0: Switch Data = %d, LEDs echoing = %d", physical_sw, physical_leds);
-        press_button();
+        // -------------------------------------------------------------
+        // State 0: OR (Opcode 0 -> 3'b000)
+        // Expected: A | B = 0x11111111 -> LEDs[15:0] = 0x1111
+        // -------------------------------------------------------------
+        #2;
+        $display("[OPCODE 0: OR] LEDs = 0x%04h | Expected = 0x1111 | Opcode Reg = %d", physical_leds, uut.reg_op);
+        if (physical_leds !== 16'h1111 || uut.reg_op !== 3'd0) begin
+            $display(">>> FAILED: Expected LEDs = 0x1111 for OR");
+            test_errors = test_errors + 1;
+        end else begin
+            $display(">>> PASSED: OR operation output verified!");
+        end
 
-        // Step 1: Set A[31:16] = 0
-        physical_sw = 16'd0;
-        repeat (20) @(posedge clk);
-        $display("State 1: Switch Data = %d, LEDs echoing = %d", physical_sw, physical_leds);
-        press_button();
+        // Wait for next step tick
+        wait_one_step();
 
-        // Step 2: Set B[15:0] = 3
-        physical_sw = 16'd3;
-        repeat (20) @(posedge clk);
-        $display("State 2: Switch Data = %d, LEDs echoing = %d", physical_sw, physical_leds);
-        press_button();
+        // -------------------------------------------------------------
+        // State 1: AND (Opcode 1 -> 3'b001)
+        // Expected: A & B = 0x00000000 -> LEDs[15:0] = 0x0000, Zero = 1
+        // -------------------------------------------------------------
+        $display("\n[OPCODE 1: AND] LEDs = 0x%04h | Expected = 0x0000 | Zero = %b | Opcode Reg = %d", 
+                 physical_leds, uut.alu_zero, uut.reg_op);
+        if (physical_leds !== 16'h0000 || uut.reg_op !== 3'd1 || uut.alu_zero !== 1'b1) begin
+            $display(">>> FAILED: Expected LEDs = 0x0000, Zero = 1 for AND");
+            test_errors = test_errors + 1;
+        end else begin
+            $display(">>> PASSED: AND operation & Zero flag verified!");
+        end
 
-        // Step 3: Set B[31:16] = 0
-        physical_sw = 16'd0;
-        repeat (20) @(posedge clk);
-        $display("State 3: Switch Data = %d, LEDs echoing = %d", physical_sw, physical_leds);
-        press_button();
+        wait_one_step();
 
-        // Step 4: Set Opcode = 2 (ADD)
-        physical_sw = 16'd2;
-        repeat (20) @(posedge clk);
-        $display("State 4: Opcode = %d, LEDs echoing = %d", physical_sw[2:0], physical_leds);
-        press_button();
+        // -------------------------------------------------------------
+        // State 2: ADD (Opcode 2 -> 3'b010)
+        // Expected: A + B = 0x11111111 -> LEDs[15:0] = 0x1111
+        // -------------------------------------------------------------
+        $display("\n[OPCODE 2: ADD] LEDs = 0x%04h | Expected = 0x1111 | Opcode Reg = %d", physical_leds, uut.reg_op);
+        if (physical_leds !== 16'h1111 || uut.reg_op !== 3'd2) begin
+            $display(">>> FAILED: Expected LEDs = 0x1111 for ADD");
+            test_errors = test_errors + 1;
+        end else begin
+            $display(">>> PASSED: ADD operation output verified!");
+        end
 
-        // Step 5: Read Lower 16-bits of Result
-        repeat (20) @(posedge clk);
-        $display("State 5 (Result Low): physical_leds = %d (Expected: 8)", physical_leds);
-        if (physical_leds == 16'd8)
-            $display(">>> TEST 1 RESULT LOW: PASSED! <<<");
-        else
-            $display(">>> TEST 1 RESULT LOW: FAILED! <<<");
-        press_button();
+        wait_one_step();
 
-        // Step 6: Read Upper 16-bits of Result
-        repeat (20) @(posedge clk);
-        $display("State 6 (Result High): physical_leds = %d (Expected: 0)", physical_leds);
-        if (physical_leds == 16'd0)
-            $display(">>> TEST 1 RESULT HIGH: PASSED! <<<");
-        else
-            $display(">>> TEST 1 RESULT HIGH: FAILED! <<<");
-        press_button();
+        // -------------------------------------------------------------
+        // State 3: XOR (Opcode 3 -> 3'b011)
+        // Expected: A ^ B = 0x11111111 -> LEDs[15:0] = 0x1111
+        // -------------------------------------------------------------
+        $display("\n[OPCODE 3: XOR] LEDs = 0x%04h | Expected = 0x1111 | Opcode Reg = %d", physical_leds, uut.reg_op);
+        if (physical_leds !== 16'h1111 || uut.reg_op !== 3'd3) begin
+            $display(">>> FAILED: Expected LEDs = 0x1111 for XOR");
+            test_errors = test_errors + 1;
+        end else begin
+            $display(">>> PASSED: XOR operation output verified!");
+        end
 
-        // Step 7: Read Carry Out
-        repeat (20) @(posedge clk);
-        $display("State 7 (Carry Out): physical_leds = %b (Expected: 0)", physical_leds[0]);
-        if (physical_leds[0] == 1'b0)
-            $display(">>> TEST 1 CARRY OUT: PASSED! <<<");
-        else
-            $display(">>> TEST 1 CARRY OUT: FAILED! <<<");
-        press_button();
+        wait_one_step();
 
-        // -----------------------------------------------------------------
-        // TEST 2: 20 - 10 = 10 (Opcode 4: SUB)
-        // -----------------------------------------------------------------
-        $display("\n[TEST 2] Setting up A = 20, B = 10, Opcode = 4 (SUB)");
+        // -------------------------------------------------------------
+        // State 4: SUB (Opcode 4 -> 3'b100)
+        // Expected: A - B = 0x0F0F0F0F -> LEDs[15:0] = 0x0F0F
+        // -------------------------------------------------------------
+        $display("\n[OPCODE 4: SUB] LEDs = 0x%04h | Expected = 0x0F0F | Opcode Reg = %d", physical_leds, uut.reg_op);
+        if (physical_leds !== 16'h0F0F || uut.reg_op !== 3'd4) begin
+            $display(">>> FAILED: Expected LEDs = 0x0F0F for SUB");
+            test_errors = test_errors + 1;
+        end else begin
+            $display(">>> PASSED: SUB operation output verified!");
+        end
 
-        // Step 0: Set A[15:0] = 20
-        physical_sw = 16'd20;
-        repeat (20) @(posedge clk);
-        press_button();
+        wait_one_step();
 
-        // Step 1: Set A[31:16] = 0
-        physical_sw = 16'd0;
-        repeat (20) @(posedge clk);
-        press_button();
+        // -------------------------------------------------------------
+        // State 5: SLL (Opcode 5 -> 3'b101)
+        // Expected: A << 1 = 0x20202020 -> LEDs[15:0] = 0x2020
+        // -------------------------------------------------------------
+        $display("\n[OPCODE 5: SLL] LEDs = 0x%04h | Expected = 0x2020 | Opcode Reg = %d", physical_leds, uut.reg_op);
+        if (physical_leds !== 16'h2020 || uut.reg_op !== 3'd5) begin
+            $display(">>> FAILED: Expected LEDs = 0x2020 for SLL");
+            test_errors = test_errors + 1;
+        end else begin
+            $display(">>> PASSED: SLL operation output verified!");
+        end
 
-        // Step 2: Set B[15:0] = 10
-        physical_sw = 16'd10;
-        repeat (20) @(posedge clk);
-        press_button();
+        wait_one_step();
 
-        // Step 3: Set B[31:16] = 0
-        physical_sw = 16'd0;
-        repeat (20) @(posedge clk);
-        press_button();
+        // -------------------------------------------------------------
+        // State 6: SRL (Opcode 6 -> 3'b110)
+        // Expected: A >> 1 = 0x08080808 -> LEDs[15:0] = 0x0808
+        // -------------------------------------------------------------
+        $display("\n[OPCODE 6: SRL] LEDs = 0x%04h | Expected = 0x0808 | Opcode Reg = %d", physical_leds, uut.reg_op);
+        if (physical_leds !== 16'h0808 || uut.reg_op !== 3'd6) begin
+            $display(">>> FAILED: Expected LEDs = 0x0808 for SRL");
+            test_errors = test_errors + 1;
+        end else begin
+            $display(">>> PASSED: SRL operation output verified!");
+        end
 
-        // Step 4: Set Opcode = 4 (SUB)
-        physical_sw = 16'd4;
-        repeat (20) @(posedge clk);
-        press_button();
+        // Check 7-segment display for Opcode 6 (3'b110)
+        // Digits 2, 1, 0 should show '1', '1', '0' and Digit 3 should be off
+        repeat (16) @(posedge clk);
+        $display("\n[7-SEGMENT DISPLAY VERIFICATION]");
+        $display("Digit 3 Anode = %b (Expected: 1 = OFF)", uut.seg_display.an[3]);
 
-        // Step 5: Read Lower 16-bits of Result
-        repeat (20) @(posedge clk);
-        $display("State 5 (Result Low): physical_leds = %d (Expected: 10)", physical_leds);
-        if (physical_leds == 16'd10)
-            $display(">>> TEST 2 SUBTRACTION: PASSED! <<<");
-        else
-            $display(">>> TEST 2 SUBTRACTION: FAILED! <<<");
+        wait_one_step();
 
-        $display("\n=================================================");
-        $display("   TESTBENCH SIMULATION COMPLETED!              ");
-        $display("=================================================");
+        // -------------------------------------------------------------
+        // Check Loop Wrap-around: Next state should be Opcode 0
+        // -------------------------------------------------------------
+        $display("\n[LOOP WRAP-AROUND CHECK]");
+        $display("Opcode Reg = %d (Expected: 0)", uut.reg_op);
+        if (uut.reg_op !== 3'd0) begin
+            $display(">>> FAILED: Loop did not wrap around to 0!");
+            test_errors = test_errors + 1;
+        end else begin
+            $display(">>> PASSED: Loop successfully wrapped back to Opcode 0!");
+        end
+
+        // -------------------------------------------------------------
+        // Check Pause Switch (sw[0] = 1)
+        // -------------------------------------------------------------
+        $display("\n[PAUSE SWITCH CHECK (sw[0] = 1)]");
+        physical_sw[0] = 1'b1;
+        wait_one_step();
+        wait_one_step();
+        $display("After 2 wait cycles with sw[0]=1, Opcode Reg = %d (Expected: 0)", uut.reg_op);
+        if (uut.reg_op !== 3'd0) begin
+            $display(">>> FAILED: Loop did not pause when sw[0]=1!");
+            test_errors = test_errors + 1;
+        end else begin
+            $display(">>> PASSED: Pause functionality verified!");
+        end
+        physical_sw[0] = 1'b0;
+
+        // -------------------------------------------------------------
+        // Summary
+        // -------------------------------------------------------------
+        $display("\n==================================================================");
+        if (test_errors == 0) begin
+            $display("   ALL TESTBENCH CHECKS PASSED SUCCESSFULLY! (0 ERRORS)         ");
+        end else begin
+            $display("   TESTBENCH COMPLETED WITH %d ERRORS!                           ", test_errors);
+        end
+        $display("==================================================================");
+
         $finish;
     end
 

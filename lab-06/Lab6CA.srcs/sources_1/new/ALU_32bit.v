@@ -5,7 +5,8 @@ module ALU_32bit(
     input wire [31:0] a,
     input wire [31:0] b,
     output reg [31:0] result,
-    output wire       carry_out
+    output wire       carry_out,
+    output wire       zero
 );
 
     wire [32:0] carry;
@@ -16,6 +17,7 @@ module ALU_32bit(
     wire [31:0] srl_result;
     assign carry[0] = (op_code == 3'd4) ? 1'b1 : 1'b0;
     assign carry_out = carry[32];
+    assign zero = (result == 32'd0);
 
     // 2. Redirect the 1-bit array output to 'basic_alu_result'
     ALU_1bit alu_inst [31:0] (

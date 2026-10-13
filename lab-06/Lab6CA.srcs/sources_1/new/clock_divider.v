@@ -10,23 +10,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module clock_divider (
-    input wire clk_in,    // The super fast 100MHz board clock
-    input wire rst,       // The reset button
-    output reg clk_out    // Our new slow 1Hz clock
+module clock_divider #(
+    parameter MAX_COUNT = 50_000_000 - 1
+)(
+    input wire clk_in,    // The 100MHz board clock
+    input wire rst,       // Reset
+    output reg clk_out = 0    // Slow 1Hz clock (period 1 sec)
 );
 
-    // A register big enough to hold the number 50,000,000
-    reg [25:0] count = 0; 
-    
-    // We toggle the output every 50 Million ticks. 
-    // 50M High + 50M Low = 100M total ticks = 1 full second.
-    
-    // TEMPORARILY CHANGED FOR SIMULATION ONLY!
-    // Change this back to 50_000_000 - 1 before programming the board!
-  
-//     localparam MAX_COUNT = 2;	// comment out for simulation
-    localparam MAX_COUNT = 50_000_000 - 1;	//comment out for hw impl
+    reg [31:0] count = 0;
 
     always @(posedge clk_in) begin
         if (rst) begin

@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.xpr">
+<Project Version="7" Minor="49" Path="C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="db6fd8c84c3548e3b7b8c5f3bd9f174f"/>

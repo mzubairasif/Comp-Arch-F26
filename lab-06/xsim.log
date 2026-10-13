@@ -1,0 +1,60 @@
+#-----------------------------------------------------------
+# xsim v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Oct  8 10:05:44 2026
+# Process ID: 1832
+# Current directory: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06
+# Command line: xsim.exe -mode tcl -source {xsim.dir/sim_snapshot/xsim_script.tcl}
+# Log file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/xsim.log
+# Journal file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/sim_snapshot/xsim_script.tcl
+# xsim {sim_snapshot} -autoloadwcfg -runall
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+run -all
+==================================================================
+    STARTING TOP FSM SYSTEM TESTBENCH (TASK 3 ALU AUTO-LOOP)      
+==================================================================
+Hardcoded Operands: A = 0x10101010, B = 0x01010101
+Checking all operations in automatic cycling loop...
+
+[OPCODE 0: OR] LEDs = 0x1111 | Expected = 0x1111 | Opcode Reg = 0
+>>> PASSED: OR operation output verified!
+
+[OPCODE 1: AND] LEDs = 0x0000 | Expected = 0x0000 | Zero = 1 | Opcode Reg = 1
+>>> PASSED: AND operation & Zero flag verified!
+
+[OPCODE 2: ADD] LEDs = 0x1111 | Expected = 0x1111 | Opcode Reg = 2
+>>> PASSED: ADD operation output verified!
+
+[OPCODE 3: XOR] LEDs = 0x1111 | Expected = 0x1111 | Opcode Reg = 3
+>>> PASSED: XOR operation output verified!
+
+[OPCODE 4: SUB] LEDs = 0x0f0f | Expected = 0x0F0F | Opcode Reg = 4
+>>> PASSED: SUB operation output verified!
+
+[OPCODE 5: SLL] LEDs = 0x2020 | Expected = 0x2020 | Opcode Reg = 5
+>>> PASSED: SLL operation output verified!
+
+[OPCODE 6: SRL] LEDs = 0x0808 | Expected = 0x0808 | Opcode Reg = 6
+>>> PASSED: SRL operation output verified!
+
+[7-SEGMENT DISPLAY VERIFICATION]
+Digit 3 Anode = 1 (Expected: 1 = OFF)
+
+[LOOP WRAP-AROUND CHECK]
+Opcode Reg = 0 (Expected: 0)
+>>> PASSED: Loop successfully wrapped back to Opcode 0!
+
+[PAUSE SWITCH CHECK (sw[0] = 1)]
+After 2 wait cycles with sw[0]=1, Opcode Reg = 0 (Expected: 0)
+>>> PASSED: Pause functionality verified!
+
+==================================================================
+   ALL TESTBENCH CHECKS PASSED SUCCESSFULLY! (0 ERRORS)         
+==================================================================
+$finish called at time : 1886 ns : File "C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sim_1/new/tb_top_fsm_system.v" Line 228
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Oct  8 10:05:47 2026...

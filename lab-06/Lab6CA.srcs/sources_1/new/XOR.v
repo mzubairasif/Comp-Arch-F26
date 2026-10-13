@@ -23,9 +23,6 @@
 module XOR(
 input wire a,b,output c
     );
-    wire temp1,temp2;
-   OR t1(a,~b,temp1);
-   OR t2 (~a,b,temp2);
-   AND combined(temp1,temp2,c);
+    assign c = a ^ b;
     
 endmodule

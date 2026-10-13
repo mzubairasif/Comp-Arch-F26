@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.runs/synth_1/top_fsm_system.tcl"
+  variable script "C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.runs/synth_1/top_fsm_system.tcl"
   variable category "vivado_synth"
 }
 
@@ -76,28 +76,29 @@ create_project -in_memory -part xc7a35tcpg236-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.cache/wt [current_project]
-set_property parent.project_path C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.cache/wt [current_project]
+set_property parent.project_path C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/Users/Zubi/Downloads/Lab6CA/Lab6CA.cache/ip [current_project]
+set_property ip_output_repo c:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/ALU_1bit.v
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/ALU_32bit.v
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/AND.v
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/OR.v
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/SLL.v
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/SRL.v
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/XOR.v
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/adder.v
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/clock_divider.v
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/debouncer.v
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/leds.v
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/switches.v
-  C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/sources_1/new/skeleton_top_fsm.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/ALU_1bit.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/ALU_32bit.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/AND.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/OR.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/SLL.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/SRL.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/XOR.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/adder.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/clock_divider.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/debouncer.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/leds.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/seven_seg_controller.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/switches.v
+  C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/sources_1/new/skeleton_top_fsm.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -108,8 +109,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/constrs_1/new/cons_1.xdc
-set_property used_in_implementation false [get_files C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.srcs/constrs_1/new/cons_1.xdc]
+read_xdc C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/constrs_1/new/cons_1.xdc
+set_property used_in_implementation false [get_files C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.srcs/constrs_1/new/cons_1.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

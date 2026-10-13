@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Oct  8 18:24:43 2026
+# Process ID: 3676
+# Current directory: C:/Users/Zubi/Downloads/lab-07
+# Command line: wbtcv.exe -mode batch -source C:/Users/Zubi/Downloads/lab-07/xsim.dir/rf_alu_snap/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/Zubi/Downloads/lab-07/webtalk.log
+# Journal file: C:/Users/Zubi/Downloads/lab-07\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/Zubi/Downloads/lab-07/xsim.dir/rf_alu_snap/webtalk/xsim_webtalk.tcl -notrace

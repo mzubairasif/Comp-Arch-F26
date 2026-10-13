@@ -1,0 +1,1 @@
+-top "tb_top_fsm_system" -s "sim_snapshot" 

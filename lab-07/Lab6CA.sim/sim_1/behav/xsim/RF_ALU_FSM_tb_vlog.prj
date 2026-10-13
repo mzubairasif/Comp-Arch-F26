@@ -1,0 +1,18 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../Lab6CA.srcs/sources_1/new/ALU_1bit.v" \
+"../../../../Lab6CA.srcs/sources_1/new/ALU_32bit.v" \
+"../../../../Lab6CA.srcs/sources_1/new/AND.v" \
+"../../../../Lab6CA.srcs/sources_1/new/OR.v" \
+"../../../../Lab6CA.srcs/sources_1/new/SLL.v" \
+"../../../../Lab6CA.srcs/sources_1/new/SRL.v" \
+"../../../../Lab6CA.srcs/sources_1/new/XOR.v" \
+"../../../../Lab6CA.srcs/sources_1/new/adder.v" \
+"../../../../../../lab_7_CA/lab_7_CA.srcs/sources_1/new/reg_file.v" \
+"../../../../Lab6CA.srcs/sim_1/new/RF_ALU_FSM_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

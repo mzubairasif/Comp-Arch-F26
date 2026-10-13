@@ -1,0 +1,11 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Oct  8 10:16:35 2026
+# Process ID: 7848
+# Current directory: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06
+# Command line: vivado.exe -mode batch -source -notrace -tclargs Lab6CA.xpr -eval open_project Lab6CA.xpr; reset_run synth_1; launch_runs synth_1 -jobs 4; wait_on_run synth_1
+# Log file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/vivado.log
+# Journal file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06\vivado.jou
+#-----------------------------------------------------------

@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/Zubi/Downloads/Lab6CA/Lab6CA.runs/impl_1'
+HD_PWD='C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-06/Lab6CA.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

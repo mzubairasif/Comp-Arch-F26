@@ -1,0 +1,29 @@
+#-----------------------------------------------------------
+# xsim v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Oct  8 18:18:02 2026
+# Process ID: 12788
+# Current directory: C:/Users/Zubi/Downloads/lab-07
+# Command line: xsim.exe -mode tcl -source {xsim.dir/rf_tb_snap/xsim_script.tcl}
+# Log file: C:/Users/Zubi/Downloads/lab-07/xsim.log
+# Journal file: C:/Users/Zubi/Downloads/lab-07\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/rf_tb_snap/xsim_script.tcl
+# xsim {rf_tb_snap} -autoloadwcfg -runall
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+run -all
+Test i: Write and Read x5
+PASS: x5 = deadbeef
+Test ii: Attempt write to x0
+PASS: x0 = 00000000
+Test iii: Simultaneous reads (x5 and x6)
+PASS: x5 = deadbeef, x6 = aaaa5555
+Test iv: Overwrite x5
+PASS: x5 overwritten = 12345678
+Test v: Reset
+PASS: Registers cleared on reset.
+$finish called at time : 115 ns : File "C:/Users/Zubi/Downloads/lab-07/Lab6CA.srcs/sim_1/new/RegisterFile_tb.v" Line 73
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Oct  8 18:18:10 2026...

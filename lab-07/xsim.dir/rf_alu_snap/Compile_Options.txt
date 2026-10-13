@@ -1,0 +1,1 @@
+-top "RF_ALU_FSM_tb" -snapshot "rf_alu_snap" -log "xelab_rf_alu.log" 

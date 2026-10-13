@@ -9,6 +9,7 @@ module tb_32bit_all;
     
     wire [31:0] result;
     wire        carry_out;
+    wire        zero;
 
     // 2. Instantiate the 32-bit ALU
     ALU_32bit uut (
@@ -16,14 +17,15 @@ module tb_32bit_all;
         .a(a),
         .b(b),
         .result(result),
-        .carry_out(carry_out)
+        .carry_out(carry_out),
+        .zero(zero)
     );
 
     // 3. Apply Test Vectors
     initial begin
         // Monitor prints output in Hexadecimal format (%h) for easy reading
-        $monitor("Time=%0t | op=%d | a=%h, b=%h | result=%h, cout=%b", 
-                 $time, op_code, a, b, result, carry_out);
+        $monitor("Time=%0t | op=%d | a=%h, b=%h | result=%h, cout=%b, zero=%b", 
+                 $time, op_code, a, b, result, carry_out, zero);
 
         // Initialize inputs
         a = 32'd0; b = 32'd0; op_code = 3'd0;
