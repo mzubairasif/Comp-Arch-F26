@@ -67,7 +67,7 @@ module top_rf_alu #(
         .zero(alu_zero)
     );
 
-    // 3. Hardware FSM
+    // 3. Hardware FSM & Control
     localparam S_INIT_X1 = 2'd0;
     localparam S_INIT_X2 = 2'd1;
     localparam S_RUN     = 2'd2;
@@ -75,6 +75,9 @@ module top_rf_alu #(
     reg [1:0] state = S_INIT_X1;
     wire auto_step = (!switch_data[0]) && slow_tick;
     wire step_event = auto_step || btn_press;
+
+    // Full 5-bit register select from SW[14:10] (addresses x0 to x31)
+    wire [4:0] reg_sel = switch_data[14:10];
 
     always @(posedge clk) begin
         case (state)
@@ -91,21 +94,25 @@ module top_rf_alu #(
                 state <= S_RUN;
             end
             S_RUN: begin
-                rf_rs1 <= 5'd1; 
-                rf_rs2 <= 5'd2;
-                
                 if (switch_data[1]) begin
                     // Manual Switch Mode:
                     // SW[4:2] directly selects ALU operation
-                    // SW[9] enables writing ALU result to register SW[13:10] upon pushbutton press
+                    // SW[14:10] selects 5-bit register (rd / rs1)
                     alu_op <= switch_data[4:2];
-                    rf_we  <= switch_data[9] && btn_press;
-                    rf_rd  <= {1'b0, switch_data[13:10]};
+                    rf_rd  <= reg_sel;
                     rf_wd  <= alu_result;
+                    rf_we  <= switch_data[9] && btn_press;
+                    
+                    // In Read Mode (SW[9] == 0), rs1 reads the selected register
+                    // In Write Mode (SW[9] == 1), rs1 reads x1 so ALU computes ALU(x1, x2)
+                    rf_rs1 <= (!switch_data[9]) ? reg_sel : 5'd1;
+                    rf_rs2 <= 5'd2;
                 end else begin
                     // FSM Stepper Mode:
                     // Cycles ALU operations when step_event occurs (auto or btn)
-                    rf_we <= 1'b0;
+                    rf_rs1 <= 5'd1;
+                    rf_rs2 <= 5'd2;
+                    rf_we  <= 1'b0;
                     if (step_event) begin
                         if (alu_op >= 3'd6) alu_op <= 3'd0;
                         else alu_op <= alu_op + 1;
@@ -123,16 +130,20 @@ module top_rf_alu #(
     // 4. LED Output Multiplexer
     reg [31:0] led_write_data = 32'd0;
     always @(*) begin
-        if (switch_data[15]) begin
-            // Show upper 16 bits of ALU result
-            led_write_data = {16'd0, alu_result[31:16]};
-        end else if (switch_data[14]) begin
-            // Show Status Flags, State, and Opcode:
+        if (switch_data[8]) begin
+            // SW[8] == 1: Status Flags, State, and Opcode:
             // LEDs [9:7]: alu_op, LEDs [5:4]: state, LED 1: carry, LED 0: zero
             led_write_data = {6'd0, alu_op, 1'b0, state, 2'b0, alu_carry, alu_zero};
+        end else if (switch_data[1] && !switch_data[9]) begin
+            // MANUAL READ MODE (SW[1]=1, SW[9]=0):
+            // LEDs display contents of register selected by SW[14:10] (rf_r1)
+            // SW[15]=0: lower 16 bits [15:0], SW[15]=1: upper 16 bits [31:16]
+            led_write_data = switch_data[15] ? {16'd0, rf_r1[31:16]} : {16'd0, rf_r1[15:0]};
         end else begin
-            // Show lower 16 bits of ALU result
-            led_write_data = {16'd0, alu_result[15:0]};
+            // ALU RESULT VIEW (Default / Auto FSM / SW[9]=1):
+            // LEDs display ALU result
+            // SW[15]=0: lower 16 bits [15:0], SW[15]=1: upper 16 bits [31:16]
+            led_write_data = switch_data[15] ? {16'd0, alu_result[31:16]} : {16'd0, alu_result[15:0]};
         end
     end
 

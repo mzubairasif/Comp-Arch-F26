@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Thu Oct  8 23:04:08 2026
-# Process ID: 2996
+# Start of session at: Thu Oct 15 10:45:33 2026
+# Process ID: 9900
 # Current directory: C:/Users/Zubi/Downloads/lab-07/Lab6CA.runs/synth_1
 # Command line: vivado.exe -log top_rf_alu.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_rf_alu.tcl
 # Log file: C:/Users/Zubi/Downloads/lab-07/Lab6CA.runs/synth_1/top_rf_alu.vds

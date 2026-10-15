@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date             : Thu Oct  8 23:10:21 2026
+| Date             : Thu Oct 15 10:50:05 2026
 | Host             : Zubi-PC running 64-bit major release  (build 9200)
 | Command          : report_power -file top_rf_alu_power_routed.rpt -pb top_rf_alu_power_summary_routed.pb -rpx top_rf_alu_power_routed.rpx
 | Design           : top_rf_alu
@@ -52,14 +52,15 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      462 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      198 |     20800 |            0.95 |
+| Clocks         |     0.004 |        3 |       --- |             --- |
+| Slice Logic    |    <0.001 |     1907 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      584 |     20800 |            2.81 |
 |   CARRY4       |    <0.001 |       17 |      8150 |            0.21 |
-|   Register     |    <0.001 |      197 |     41600 |            0.47 |
+|   Register     |    <0.001 |     1131 |     41600 |            2.72 |
+|   F7/F8 Muxes  |    <0.001 |      133 |     32600 |            0.41 |
 |   Others       |     0.000 |       11 |       --- |             --- |
-| Signals        |    <0.001 |      431 |       --- |             --- |
-| I/O            |     0.016 |       42 |       106 |           39.62 |
+| Signals        |    <0.001 |     1615 |       --- |             --- |
+| I/O            |     0.013 |       43 |       106 |           40.57 |
 | Static Power   |     0.072 |          |           |                 |
 | Total          |     0.090 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
@@ -71,9 +72,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.012 |       0.002 |      0.010 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.013 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.006 |       0.005 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.015 |       0.005 |      0.010 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.005 |       0.004 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -141,6 +142,7 @@ Table of Contents
 | Name       | Power (W) |
 +------------+-----------+
 | top_rf_alu |     0.019 |
+|   my_rf    |     0.003 |
 +------------+-----------+
 
 
