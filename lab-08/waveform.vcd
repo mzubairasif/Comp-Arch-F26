@@ -1,0 +1,116 @@
+$date
+   Thu Oct 15 20:02:23 2026
+$end
+$version
+  2020.1
+$end
+$timescale
+  1ps
+$end
+$scope module MemorySystem_tb $end
+$var reg 1 ! clk $end
+$var reg 1 " rst $end
+$var reg 32 # address [31:0] $end
+$var reg 1 $ readEnable $end
+$var reg 1 % writeEnable $end
+$var reg 32 & writeData [31:0] $end
+$var reg 16 ' switches [15:0] $end
+$var wire 32 ( readData [31:0] $end
+$var wire 16 ) leds [15:0] $end
+$var integer 32 * errors $end
+$scope module dut $end
+$var wire 1 + clk $end
+$var wire 1 , rst $end
+$var wire 32 - address [31:0] $end
+$var wire 1 . readEnable $end
+$var wire 1 / writeEnable $end
+$var wire 32 0 writeData [31:0] $end
+$var wire 16 1 switches [15:0] $end
+$var wire 32 ( readData [31:0] $end
+$var wire 16 ) leds [15:0] $end
+$var wire 1 2 DataMemWrite $end
+$var wire 1 3 DataMemRead $end
+$var wire 1 4 LEDWrite $end
+$var wire 1 5 SwitchReadEnable $end
+$var wire 1 6 DataMemSelect $end
+$var wire 1 7 LEDSelect $end
+$var wire 1 8 SwitchSelect $end
+$var wire 32 9 data_mem_out [31:0] $end
+$var wire 32 : switch_data_out [31:0] $end
+$var wire 16 ; leds_internal [15:0] $end
+$var wire 32 < led_write_bus [31:0] $end
+$scope module decoder_inst $end
+$var wire 32 - address [31:0] $end
+$var wire 1 . readEnable $end
+$var wire 1 / writeEnable $end
+$var wire 1 2 DataMemWrite $end
+$var wire 1 3 DataMemRead $end
+$var wire 1 4 LEDWrite $end
+$var wire 1 5 SwitchReadEnable $end
+$var wire 1 6 DataMemSelect $end
+$var wire 1 7 LEDSelect $end
+$var wire 1 8 SwitchSelect $end
+$upscope $end
+$scope module data_mem_inst $end
+$var wire 1 + clk $end
+$var wire 1 , rst $end
+$var wire 1 2 MemWrite $end
+$var wire 1 3 MemRead $end
+$var wire 9 = address [8:0] $end
+$var wire 32 0 write_data [31:0] $end
+$var wire 32 9 read_data [31:0] $end
+$var integer 32 > i $end
+$var parameter 32 ? DEPTH [31:0] $end
+$var parameter 32 @ DATA_WIDTH [31:0] $end
+$var parameter 32 A ADDR_WIDTH [31:0] $end
+$upscope $end
+$scope module switch_interface $end
+$var wire 16 1 physical_sw [15:0] $end
+$var wire 32 : switch_data [31:0] $end
+$upscope $end
+$scope module led_interface $end
+$var wire 1 + clk $end
+$var wire 1 , rst $end
+$var wire 32 < writeData [31:0] $end
+$var reg 16 B physical_leds [15:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+1!
+0"
+b0 #
+0$
+0%
+b11111111111111111111111111111111 &
+b1010010101011010 '
+b0 (
+b1001000110100 )
+b0 *
+1+
+0,
+b0 -
+0.
+0/
+b11111111111111111111111111111111 0
+b1010010101011010 1
+02
+03
+04
+05
+16
+07
+08
+b0 9
+b1010010101011010 :
+b1001000110100 ;
+b1001000110100 <
+b0 =
+b1000000000 >
+b1000000000 ?
+b100000 @
+b1001 A
+b1001000110100 B
+$end

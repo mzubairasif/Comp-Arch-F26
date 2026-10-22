@@ -1,0 +1,17 @@
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -top MemorySystem_tb -s mem_snapshot 
+Multi-threading is on. Using 10 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.AddressDecoder
+Compiling module work.DataMemory
+Compiling module work.switches
+Compiling module work.leds
+Compiling module work.addressDecoderTop
+Compiling module work.MemorySystem_tb
+Built simulation snapshot mem_snapshot

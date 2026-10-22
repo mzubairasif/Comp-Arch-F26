@@ -1,0 +1,48 @@
+#-----------------------------------------------------------
+# xsim v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Oct 15 20:02:21 2026
+# Process ID: 7956
+# Current directory: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-08
+# Command line: xsim.exe -mode tcl -source {xsim.dir/mem_snapshot/xsim_script.tcl}
+# Log file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-08/xsim.log
+# Journal file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-08\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/mem_snapshot/xsim_script.tcl
+# xsim {mem_snapshot} -autoloadwcfg -runall
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+run -all
+===================================================================
+        Starting Lab 8 Memory System & Address Decoder Tests       
+===================================================================
+
+--- TEST 1: Data Memory Write and Read-Back ---
+[PASS] Read Memory[0]: Expected 32'hDEADBEEF, Got 32'hdeadbeef
+[PASS] Read Memory[10]: Expected 32'hCAFE1234, Got 32'hcafe1234
+[PASS] Read Memory[255]: Expected 32'h55AA33CC, Got 32'h55aa33cc
+
+--- TEST 2: Memory-Mapped LEDs Write ---
+[PASS] Write LEDs (0xABCD): LEDs correctly show 16'habcd
+[PASS] Overwrite LEDs (0x1234): LEDs correctly show 16'h1234
+
+--- TEST 3: Memory-Mapped Switches Read ---
+[PASS] Read Switches (0xF0F0): CPU readData = 32'h0000f0f0
+[PASS] Read Switches dynamic change (0xA55A): CPU readData = 32'h0000a55a
+
+--- TEST 4: Decoder Isolation & Mutual Exclusion ---
+[PASS] Memory write does NOT corrupt LEDs: LEDs remain 16'h1234
+[PASS] Write to read-only Switch address is safely ignored
+[PASS] Read from write-only LED address returns 32'h00000000
+[PASS] Access to Unused address space (2'b11) has no side-effects and returns 0
+[PASS] Read with readEnable=0 returns 32'h00000000
+
+===================================================================
+   *** ALL TESTS PASSED SUCCESSFULLY! (0 Errors) ***               
+   Data Memory, Address Decoder, LEDs, and Switches are verified!  
+===================================================================
+
+$finish called at time : 266 ns : File "C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-08/Lab6CA.srcs/sim_1/new/MemorySystem_tb.v" Line 297
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Oct 15 20:02:24 2026...

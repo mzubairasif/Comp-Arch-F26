@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Oct 15 15:11:08 2026
+# Process ID: 14384
+# Current directory: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-08/Lab6CA.runs/synth_1
+# Command line: vivado.exe -log top_memory_system.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_memory_system.tcl
+# Log file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-08/Lab6CA.runs/synth_1/top_memory_system.vds
+# Journal file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-08/Lab6CA.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source top_memory_system.tcl -notrace

@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# xsim v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Oct 15 15:35:11 2026
+# Process ID: 17224
+# Current directory: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-08
+# Command line: xsim.exe -mode tcl -source {xsim.dir/mem_snapshot/xsim_script.tcl}
+# Log file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-08/xsim.log
+# Journal file: C:/Users/Zubi/Desktop/Comp-Arch-F26/lab-08\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/mem_snapshot/xsim_script.tcl
+run -all

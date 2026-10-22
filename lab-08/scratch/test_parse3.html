@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head>
+<body>
+    <h1>Mermaid Test</h1>
+    <div id="output"></div>
+    <div id="diagram"></div>
+    <script>
+        window.addEventListener('DOMContentLoaded', async () => {
+            mermaid.initialize({ startOnLoad: false });
+            const code = "flowchart TD\n    subgraph RegisterFile [\"32x32 Register File (reg_file / RegisterFile)\"]\n        subgraph Ports [\"Port Interface\"]\n            CLK[\"clk (System Clock)\"]\n            RST[\"rst / reset\"]\n            WE[\"reg_write / WriteEnable\"]\n            RD_ADDR[\"rd (5-bit address)\"]\n            WD[\"write_data (32-bit data)\"]\n            RS1[\"rs1 (5-bit address)\"]\n            RS2[\"rs2 (5-bit address)\"]\n        end\n\n        subgraph Core [\"Storage Array and Logic\"]\n            DEC[\"5-to-32 Write Decoder (rd != 0 and reg_write)\"]\n            REGS[\"32 x 32-Bit Registers (x0 hardwired 0, x1..x31)\"]\n            MUX1[\"32-to-1 MUX (rs1)\"]\n            MUX2[\"32-to-1 MUX (rs2)\"]\n        end\n\n        RD_ADDR --> DEC\n        WE --> DEC\n        CLK --> REGS\n        RST --> REGS\n        WD --> REGS\n        DEC -->|Write Strobe| REGS\n        REGS --> MUX1\n        REGS --> MUX2\n        RS1 --> MUX1\n        RS2 --> MUX2\n    end\n\n    subgraph ALU [\"32-Bit ALU (ALU_32bit)\"]\n        OP[\"op_code (3-bit)\"]\n        ALU_CORE[\"ALU Logic Slices and Shifters (ADD, SUB, AND, OR, XOR, SLL, SRL)\"]\n        RES[\"result (32-bit)\"]\n        ZERO[\"zero flag (1 if result == 0)\"]\n        CARRY[\"carry_out\"]\n\n        OP --> ALU_CORE\n        ALU_CORE --> RES\n        ALU_CORE --> ZERO\n        ALU_CORE --> CARRY\n    end\n\n    subgraph Feedback [\"Datapath / FSM Feedback\"]\n        FSM[\"Hardware FSM / Control Unit\"]\n    end\n\n    MUX1 -->|read_1 32-bit| ALU_CORE\n    MUX2 -->|read_2 32-bit| ALU_CORE\n    RES -->|Writeback Datapath| WD\n    ZERO -->|Branch Condition / Status| FSM\n";
+            try {
+                const parseRes = await mermaid.parse(code);
+                const renderRes = await mermaid.render('renderedSvg', code);
+                document.getElementById('output').innerText = "SUCCESS: " + (renderRes.svg ? "RENDERED_SVG_OK" : "NO_SVG");
+                document.getElementById('diagram').innerHTML = renderRes.svg;
+            } catch (err) {
+                document.getElementById('output').innerText = "ERROR: " + (err.str || err.message || JSON.stringify(err));
+            }
+        });
+    </script>
+</body>
+</html>

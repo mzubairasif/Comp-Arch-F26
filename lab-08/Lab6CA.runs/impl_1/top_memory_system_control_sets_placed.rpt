@@ -1,0 +1,210 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Thu Oct 15 15:13:59 2026
+| Host         : Zubi-PC running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_memory_system_control_sets_placed.rpt
+| Design       : top_memory_system
+| Device       : xc7a35t
+----------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |   132 |
+|    Minimum number of control sets                        |   132 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |     3 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |   132 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     0 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |   131 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              32 |           15 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              47 |           12 |
+| Yes          | No                    | No                     |            2054 |         1000 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+------------------------------+--------------------------+------------------+----------------+--------------+
+|  Clock Signal  |         Enable Signal        |     Set/Reset Signal     | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+------------------------------+--------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG | btn_db/pb_state_reg_0        |                          |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_51       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_23       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG |                              | btn_db/count[15]_i_1_n_0 |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG | btn_db/memory[273][15]_i_2   |                          |               11 |             16 |         1.45 |
+|  clk_IBUF_BUFG | btn_db/memory[273][15]_i_2_0 |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_25       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_27       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_32       |                          |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_40       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_50       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_30       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/physical_sw[13]       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_47       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_1        |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_10       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_33       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_35       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_14       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_21       |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_16       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_37       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_39       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_18       |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_41       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_36       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_28       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_38       |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_49       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_13       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_22       |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_31       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_6        |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_0        |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_20       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_19       |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_3        |                          |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_2        |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_34       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/physical_sw[1]        |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_26       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]          |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_24       |                          |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_29       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_4        |                          |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_42       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_43       |                          |               11 |             16 |         1.45 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_44       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_46       |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/physical_sw[12]_0     |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_11       |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_45       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_48       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_5        |                          |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG | btn_db/physical_sw[12]       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_12       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_15       |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_17       |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_23       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_15       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_8        |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_11       |                          |               11 |             16 |         1.45 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_21       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_63       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_14       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_59       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]          |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_1        |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_18       |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_27       |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_13       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_52       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_55       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_3        |                          |               11 |             16 |         1.45 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_66       |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_12       |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_17       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_25       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_4        |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_14       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_15       |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_16       |                          |               11 |             16 |         1.45 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_7        |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_53       |                          |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_24       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_6        |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_18       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_19       |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_5        |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_10       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_2        |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_61       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_0        |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_8        |                          |               13 |             16 |         1.23 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_65       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_9        |                          |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]          |                          |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_1        |                          |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_13       |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_10       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_20       |                          |               12 |             16 |         1.33 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_57       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_58       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_7        |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_6        |                          |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_2        |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_22       |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_28       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_29       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_9        |                          |               13 |             16 |         1.23 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_0        |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_64       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_11       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_23       |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_54       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_56       |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[0]_60       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_12       |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_19       |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[1]_26       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_9        |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_22       |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_7        |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_21       |                          |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_8        |                          |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_4        |                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_20       |                          |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_3        |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_24       |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | btn_db/state_reg[2]_5        |                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG |                              | ticker/clk_out           |                8 |             31 |         3.88 |
+|  clk_IBUF_BUFG |                              |                          |               15 |             32 |         2.13 |
++----------------+------------------------------+--------------------------+------------------+----------------+--------------+
+
+
